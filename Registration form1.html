@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+#text-area {
+      width: 100%;
+      height: 150px;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      background-color: #f8f8f8;
+      resize: none;
+    }
+    
+</style>
+<body>
+
+    <div class="container" id="cont">
+        <h1 class="text-success text-center">Registration Form</h1>
+        <div class="col-lg-8 m-auto d-block">
+            <form action="#" onsubmit="return validation()" class="bg-light">
+            <div class= "form-group">
+                <label>Username: </label>
+                <input type="text" name="user" class="form-control" id="user" autocomplete="off">
+                <span id="username" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Password: </label>
+                <input type="text" name="pass" class="form-control" id="pass" autocomplete="off">
+                <span id="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Confirm Password: </label>
+                <input type="text" name="pass" class="form-control" id="ConfirmPass" autocomplete="off">
+                <span id="ConfirmPass" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Mobile Number: </label>
+                <input type="text" name="mobile" class="form-control" id="mobile" autocomplete="off">
+                <span id="MobileNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Email: </label>
+                <input type="text" name="email" class="form-control" id="email" autocomplete="off">
+                <span id="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Gender:</label>
+                <br>
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="gender" id="male">
+                <span id="male">Male</span>
+                &nbsp;&nbsp;
+                <input type="radio" name="gender" id="Female">
+                <span id="Female">Female</span>
+            </div>
+
+            <div class="form-group">
+                <label>Address: </label>
+                <input type="text" name="addr" class="form-control" id="addr" autocomplete="off">
+                <span id="Addr" class="text-danger"></span>
+            </div>
+            
+            <input type="button" onclick="validation()" value="Click me" class="btn btn-success">
+            <br><br>
+
+
+            <p>When the user will click on submit button, all the information will be stored in the text area</p>
+            <textarea rows="4" cols="50" id="text-area"> </textarea> 
+        </form>
+        </div>
+    </div>
+</body>
+<!-- <script src="js/jQuery-3.3.1.min.js"></script> -->
+<!-- JQuery CDN -->
+<script>
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous">
+</script>
+
+<script>
+    // when we click on names shown on the screen the names will disappear
+    // $('label').click();
+    // $('label').click(function(){
+        // console.log('label Element gets clicked');
+        // $(this).hide();
+
+        // dblclick event on button
+        // $('.btn').dblclick(function(){
+        //     console.log('You double clicked on the button');
+        // });
+
+        // mouseenter event
+        // $('label').mouseenter(function(){
+        //     console.log('Mouse entered is working perfectly fine')
+        // })
+
+        // Element SElector :-  This is an example of element selector which clicks on all label element
+        // $('label').click()
+
+
+         //Id Selector :-  This is an example of Id selector
+        // console.log('Id gets clicked');
+        // $('#user').click();
+
+        //Class Selector:- This is an example of class selector
+    //     console.log('Class gets hide');
+    //     $('.form-control').hide();
+
+    $('label').on(
+        click: function(){
+            console.log('Thanks for clicking',this);
+
+        },
+        mouseleave: function(){
+            console.log('mouseleave');
+        }
+    $("#cont").hide(2000, function(){
+        console.log("hidden");
+    })
+    $("#cont").show(2000, function(){
+        console.log("show")
+
+    })
+
+    )};
+    function validation(){
+
+        var user = document.getElementById("user").value;
+        var pass = document.getElementById("pass").value;
+        var ConfirmPass = document.getElementById("ConfirmPass").value;
+        var mobile = document.getElementById("mobile").value;
+        var email = document.getElementById("email").value;
+        var addr = document.getElementById("addr").value;
+
+        var StoredText = "UserName:\t"+user+" "+"\nPassword:\t"+pass+" "+"\nConfirmPassword:\t"+ConfirmPass+"\n Mobile Number:\t"+mobile+" "+"\nEmail:\t"+email+" "+"\nAddress: \t"+addr
+       
+
+
+        if (user == ""){
+            document.getElementById("username").innerHTML = "**Please fill your username";
+            return false;
+
+        }
+        else if ((user.length <= 1) || (user.length >=20)){
+            document.getElementById("username").innerHTML = "**Name must be greater than 1 and less than 20 ";
+            return false;
+
+        }
+        else if(!isNaN(user)){
+            document.getElementById("username").innerHTML = "**Numeric value is not allowed(Please enter Characters)";
+        }
+        else{
+            document.getElementById("text-area").value = StoredText;
+        }
+
+// Password starts from here
+        if (pass == ""){
+            document.getElementById("Password").innerHTML = "**Please fill your Password";
+            return false;
+
+        }
+        else if (pass.length <= 5){
+            document.getElementById("Password").innerHTML = "**Password must be greater than 5";
+            return false;
+        }
+
+        else if (pass.length!=ConfirmPass){
+            document.getElementById("ConfirmPass").innerHTML = "**Password are not matching";
+        }
+
+        else if (ConfirmPass == ""){
+            document.getElementById("ConfirmPass").innerHTML = "**Password doesnt match";
+            return false;
+        }
+        else{
+            document.getElementById("text-area").value = StoredText;
+        }
+// Mobile number starts from here
+        if (mobile == ""){
+            document.getElementById("MobileNo").innerHTML = "**Please fill your Mobile number";
+            return false;
+
+        }
+        else if(isNaN(mobile)){
+            document.getElementById("MobileNo").innerHTML ="**Please Enter numeric value";
+        }
+        else if (mobile.length !=10){
+            document.getElementById("MobileNo").innerHTML = "**Mobile number must be of 10 digits only"
+        }
+        else{
+            document.getElementById("text-area").value = StoredText;
+        }
+
+// Email Validation starts from here
+        function isEmail(Email){
+            return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(Email);
+
+        }
+
+        if (email == ""){
+            document.getElementById("Email").innerHTML = "**Please fill your email";
+            return false;
+
+        }
+        else if(!isEmail(email)){
+            document.getElementById("Email").innerHTML = "**Email is not valid";
+        }
+
+        if (addr == ""){
+            document.getElementById("Addr").innerHTML = "**Please fill your Address";
+            return false;
+
+        }
+        else{
+            document.getElementById("text-area").value = StoredText;
+        }
+    }
+
+</script>
+</html>
